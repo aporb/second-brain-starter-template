@@ -1,183 +1,234 @@
-# Second Brain Starter Template
+<div align="center">
 
-A persistent, interlinked markdown knowledge base that you and your AI agent build together.
+```
+███████╗ ██████╗ ███████╗███████╗     ██████╗ ███████╗███████╗██████╗  ██████╗ ████████╗███████╗██████╗ ███╗   ███╗
+██╔════╝██╔═══██╗██╔════╝██╔════╝    ██╔═══██╗██╔════╝██╔════╝██╔══██╗██╔═══██╗╚══██╔══╝██╔════╝██╔══██╗████╗ ████║
+███████╗██║   ██║███████╗███████╗    ██║   ██║█████╗  █████╗  ██████╔╝██║   ██║   ██║   █████╗  ██████╔╝██╔████╔██║
+╚════██║██║   ██║╚════██║╚════██║    ██║   ██║██╔══╝  ██╔══╝  ██╔══██╗██║   ██║   ██║   ██╔══╝  ██╔══██╗██║╚██╔╝██║
+███████║╚██████╔╝███████║███████║    ╚██████╔╝███████╗███████╗██║  ██║╚██████╔╝   ██║   ███████╗██║  ██║██║ ╚═╝ ██║
+╚══════╝ ╚═════╝ ╚══════╝╚══════╝     ╚═════╝ ╚══════╝╚══════╝╚═╝  ╚═╝ ╚═════╝    ╚═╝   ╚══════╝╚═╝  ╚═╝╚═╝     ╚═╝
+```
 
-**Clone it. Open in Obsidian. Connect your agent. Start building.**
+### A persistent knowledge base you build with your AI agent.
+
+**Clone → Open in Obsidian → Connect your agent → Start building.**
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](https://opensource.org/licenses/MIT)
+[![Agent Agnostic](https://img.shields.io/badge/agent-agnostic-blue?style=flat-square)](https://github.com/aporb/second-brain-starter-template)
+[![Zero Plugins](https://img.shields.io/badge/zero_plugins-required-green?style=flat-square)](https://obsidian.md)
+[![Markdown](https://img.shields.io/badge/pure-markdown-white?style=flat-square)](https://en.wikipedia.org/wiki/Markdown)
+
+</div>
 
 ---
 
-## What Is This?
+## The Idea
 
-This is a starter template for building an **LLM Wiki** — a living knowledge base where you curate sources and your AI agent synthesizes them into interconnected wiki pages. It implements the [Karpathy LLM Wiki](https://x.com/karpathy) pattern: the vault isn't passive filing, it's an active knowledge graph the agent maintains.
+You read things. Articles, papers, books, transcripts. You learn from them. Then you forget most of it.
 
-The template is **agent-agnostic**. It works with Claude Code, OpenAI Codex, OpenCode, Cursor, GitHub Copilot, or any agent that can read markdown and follow instructions.
+Note-taking apps don't solve this. They're filing cabinets — you dump things in and never find them again. Search helps, but search only finds what you already know you wrote.
 
-## Architecture
+**This template does something different.** Your AI agent reads your sources, synthesizes them into connected wiki pages, and builds a living knowledge graph that grows every time you add something new. You curate. The agent connects. You both remember.
 
-Four zones, each with a distinct owner and access rules:
+This is sometimes called an **LLM Wiki** — a knowledge base that an AI agent actively maintains, not just a folder of notes you hope to revisit.
+
+---
+
+## How It Works
 
 ```
-/sources/    → Raw materials. You curate, agent ingests. Immutable.
-/wiki/       → Synthesized knowledge. Agent writes, you review.
-/journal/    → Your thinking. You write, agent reads.
-/schema/     → The rules. You set them, agent follows them.
+You drop sources in →    /sources/     (you own this)
+                          ↓
+Agent reads & connects → /wiki/        (agent writes, you review)
+                          ↓
+You think & reflect in → /journal/     (you own this too)
+                          ↑
+Agent follows rules from → /schema/    (you set the rules)
 ```
 
-| Zone | Agent Access | Human Access |
-|------|-------------|-------------|
-| Sources | Read only | Read + write |
-| Wiki | Read + write (drafts only) | Read + write (all) |
-| Journal | Read only | Read + write |
-| Schema | Read only | Read + write |
+**Four zones. Clear ownership. No confusion about who does what.**
 
-### Status Lifecycle
+| Zone | What Goes Here | Who Owns It | What the Agent Does |
+|------|---------------|-------------|-------------------|
+| **Sources** | Articles, papers, transcripts — raw material | You | Reads them. Never modifies. |
+| **Wiki** | Synthesized knowledge — connected pages | Agent (you review) | Creates and updates pages. |
+| **Journal** | Daily notes, reflections, decisions | You | Reads for context. Never modifies. |
+| **Schema** | Rules, tags, templates | You | Follows them. Never changes. |
 
-- Sources: `unread → reading → processed`
-- Wiki: `draft → reviewed → stable`
-- Once a wiki page is `reviewed` or `stable`, the agent cannot modify it without your explicit instruction.
+### The Workflow
 
-### Contradictions
+1. **You** save an article into `/sources/` (as a markdown file).
+2. **You** tell the agent to process it (one command).
+3. **The agent** reads the source, identifies key concepts, creates wiki pages, and links everything together.
+4. **You** review the wiki pages. If something's wrong, fix it. If it's right, mark it reviewed.
+5. Repeat. Over time, you get a connected web of knowledge that the agent maintains for you.
 
-When sources disagree, the agent flags the conflict in `/wiki/contradictions.md` instead of silently picking one version. You decide.
+### Safety Built In
+
+- The agent **cannot modify** anything you've reviewed and approved.
+- The agent **cannot change** your source files. Ever.
+- When sources contradict each other, the agent **flags the conflict** instead of silently picking one. You decide.
+- The agent **never fabricates** — every claim in a wiki page cites its source.
+
+---
 
 ## Quick Start
 
-### 1. Clone and Open
+### What You Need
+
+- **[Obsidian](https://obsidian.md)** — free note-taking app. Download it.
+- **An AI agent** — Claude Code, Cursor, GitHub Copilot, or any agent that can read files and follow instructions.
+- **A GitHub account** — to download this template. Free.
+
+### Step 1: Download This Template
+
+Click the green **"Code"** button above and select **"Download ZIP"**, or if you use the terminal:
 
 ```bash
 git clone https://github.com/aporb/second-brain-starter-template.git my-vault
-cd my-vault
 ```
 
-Open the `my-vault` folder in Obsidian. Zero plugins required — it works out of the box.
+### Step 2: Open in Obsidian
 
-### 2. Connect Your Agent
+1. Open Obsidian.
+2. Click **"Open folder as vault"**.
+3. Select the folder you just downloaded.
+4. That's it. No plugins to install. No settings to configure.
 
-Point your AI agent at the vault directory. The agent reads the instruction files:
+### Step 3: Connect Your Agent
 
-| Agent | Instruction File |
-|-------|-----------------|
-| Claude Code | `CLAUDE.md` + `.claude/commands/` |
-| Cursor | `.cursorrules` |
-| GitHub Copilot | `copilot-instructions.md` |
-| Any other | `AGENTS.md` |
+Point your AI agent at the vault folder. The agent reads instruction files that are already in the repo — no setup needed on your end.
 
-All four files point to `/schema/agent-protocol.md` as the single source of truth. Update the protocol once, all agents stay in sync.
+| Your Agent | What It Reads |
+|-----------|--------------|
+| **Claude Code** | `CLAUDE.md` + 7 built-in slash commands |
+| **Cursor** | `.cursorrules` |
+| **GitHub Copilot** | `copilot-instructions.md` |
+| **Anything else** | `AGENTS.md` |
 
-### 3. Start Building
+All of them point to the same source of truth: `/schema/agent-protocol.md`. You update the rules in one place, every agent stays in sync.
 
-1. Drop a source into `/sources/` (article, paper, transcript — as markdown).
-2. Run `/ingest` (Claude Code) or tell your agent to process the source.
-3. The agent reads the source, creates wiki pages, links them together.
-4. Review the wiki pages. Mark them `reviewed` when you're satisfied.
-5. Repeat.
+### Step 4: Start Building
 
-## Slash Commands (Claude Code)
+1. Save an article as a markdown file in `/sources/` (use the template there).
+2. Tell your agent to process it:
+   - Claude Code: type `/ingest`
+   - Other agents: "Read the source file in /sources/ and create wiki pages from it"
+3. Check `/wiki/` — your agent created pages and linked them together.
+4. Review the pages. Mark them `reviewed` when you're satisfied.
+5. Add more sources. Repeat.
+
+---
+
+## Built-in Commands (Claude Code)
+
+If you use Claude Code, you get 7 slash commands out of the box:
 
 | Command | What It Does |
 |---------|-------------|
-| `/ingest` | Read a source, create wiki pages, cross-reference |
-| `/ask` | Query the wiki using existing synthesized knowledge |
-| `/research` | Research a topic, ingest sources, build wiki pages |
+| `/ingest` | Process a source → create wiki pages → cross-reference |
+| `/ask` | Ask a question → get an answer from your wiki |
+| `/research` | Research a topic → ingest sources → build wiki pages |
 | `/daily` | Create today's journal entry scaffold |
-| `/sync` | Git pull, add, commit, push |
-| `/status` | Show vault health (unprocessed sources, stale pages, contradictions) |
+| `/sync` | Save your work (pull, commit, push to GitHub) |
+| `/status` | Show vault health — what needs attention |
 | `/expand` | Take a wiki page and deepen it from sources |
 
-For other agents, equivalent workflows are documented in `AGENTS.md`.
+Using a different agent? The same workflows are documented in `AGENTS.md`.
 
-## Git Workflow
+---
 
-### For Solo Use
+## What's In The Box
 
-Commit directly to `main`. The `/sync` command or `scripts/sync.sh` handles the cycle:
-
-```bash
-./scripts/sync.sh "wiki: added page on topic-x"
+```
+second-brain-starter-template/
+├── CLAUDE.md                 ← Claude Code reads this
+├── AGENTS.md                 ← Any agent reads this
+├── .cursorrules              ← Cursor reads this
+├── copilot-instructions.md   ← GitHub Copilot reads this
+├── llms.txt                  ← Agent discovery (short)
+├── llms-full.txt             ← Agent discovery (full reference)
+│
+├── sources/                  ← You put raw material here
+│   ├── README.md             (how to use this folder)
+│   └── _template.md          (copy this for new sources)
+│
+├── wiki/                     ← Agent builds knowledge here
+│   ├── README.md             (how this folder works)
+│   ├── _template.md          (page template)
+│   ├── index.md              (table of contents)
+│   └── contradictions.md     (where conflicts get flagged)
+│
+├── journal/                  ← Your daily thinking
+│   ├── README.md             (how to use this folder)
+│   └── _template.md          (daily entry template)
+│
+├── schema/                   ← The rules
+│   ├── README.md             (what's in here)
+│   ├── agent-protocol.md     (the full operating rules)
+│   ├── tags.md               (tag taxonomy)
+│   └── templates.md          (page templates)
+│
+├── scripts/
+│   └── sync.sh               ← Save your work in one command
+│
+└── .claude/commands/         ← 7 slash commands for Claude Code
+    ├── ingest.md
+    ├── ask.md
+    ├── research.md
+    ├── daily.md
+    ├── sync.md
+    ├── status.md
+    └── expand.md
 ```
 
-Or without a message — it auto-detects what changed:
+---
 
-```bash
-./scripts/sync.sh
-# → "update: sources:1,wiki:2"
-```
+## FAQ
 
-### For Collaborative Use
+**Do I need to know how to code?**
+No. If you can save a file and type a sentence to an AI agent, you can use this template. The Quick Start above walks you through everything.
 
-Branch per session, merge after review:
+**What if I don't use Claude Code?**
+The template works with any AI agent. Claude Code gets the best experience (7 slash commands), but the core workflows — ingest sources, build wiki pages, flag contradictions — work with any agent that can read and write markdown files. Instructions for all agents are in `AGENTS.md`.
 
-```bash
-git checkout -b agent/2024-01-15-research-topic
-# ... agent does work ...
-git push origin agent/2024-01-15-research-topic
-# review and merge via PR
-```
+**Do I need Obsidian plugins?**
+No. Zero plugins required. Obsidian works out of the box with this vault. Add plugins on your own if you want, but you don't need any.
 
-### Commit Message Format
+**What's an LLM Wiki?**
+A term coined by Andrej Karpathy. Instead of passively filing notes, an AI agent actively reads your sources, synthesizes them into connected pages, and maintains the knowledge base over time. The vault grows smarter as you add more to it.
 
-| Prefix | When |
-|--------|------|
-| `ingest:` | After processing a source |
-| `wiki:` | After creating or updating a wiki page |
-| `journal:` | After a journal entry |
-| `schema:` | After updating schema files |
-| `update:` | Mixed changes |
+**Can I use this with my team?**
+Yes. The template supports branching workflows — each person works on a branch, then you merge after review. See the Git Workflow section in `AGENTS.md`.
 
-## Date Handling
+**What if the agent writes something wrong?**
+You review it. Wiki pages start as `draft` — the agent can modify them freely. Once you mark a page `reviewed`, the agent cannot change it without your explicit permission. You're always in control.
 
-**The agent always runs `date +%Y-%m-%d` to get the local system date** before creating or updating any file. Never infer dates from timestamps or metadata — the system clock is the source of truth. This ensures frontmatter dates are accurate regardless of timezone or session context.
+**Where does my data live?**
+On your machine. Pure markdown files. No cloud, no database, no lock-in. You own everything.
 
-## Agent Discovery
+**What does "agent-agnostic" mean?**
+This template doesn't care which AI tool you use. Claude Code, Cursor, GitHub Copilot, OpenAI Codex, or anything else — they all read the same instruction files and follow the same rules.
 
-This repo includes `llms.txt` and `llms-full.txt` at the root, following the [llmstxt.org](https://llmstxt.org) convention. Any agent that hits this repo gets a quick orientation file automatically.
+---
 
 ## What This Is Not
 
-- **Not a plugin collection** — zero plugins required. Obsidian works out of the box.
-- **Not a sync solution** — bring your own git workflow. The `scripts/sync.sh` is a helper, not a framework.
-- **Not a database** — pure markdown + git. Your data is always portable.
-- **Not agent-specific** — works with any agent that reads markdown and follows instructions.
+- ❌ Not a plugin collection — zero plugins required
+- ❌ Not a sync service — your data stays local
+- ❌ Not a database — pure markdown, portable forever
+- ❌ Not tied to one AI tool — works with any agent
 
-## Directory Structure
-
-```
-/
-├── CLAUDE.md                    # Claude Code instructions
-├── AGENTS.md                    # Agent-agnostic instructions
-├── .cursorrules                 # Cursor rules
-├── copilot-instructions.md      # GitHub Copilot instructions
-├── llms.txt                     # Agent discovery (short)
-├── llms-full.txt                # Agent discovery (full reference)
-├── README.md                    # You are here
-├── .claude/commands/            # Claude Code slash commands
-│   ├── ingest.md
-│   ├── ask.md
-│   ├── research.md
-│   ├── daily.md
-│   ├── sync.md
-│   ├── status.md
-│   └── expand.md
-├── sources/                     # Raw materials (immutable)
-│   ├── README.md
-│   └── _template.md
-├── wiki/                        # Synthesized knowledge
-│   ├── README.md
-│   ├── _template.md
-│   ├── index.md
-│   └── contradictions.md
-├── journal/                     # Human thinking
-│   ├── README.md
-│   └── _template.md
-├── schema/                      # Rules
-│   ├── README.md
-│   ├── agent-protocol.md
-│   ├── tags.md
-│   └── templates.md
-└── scripts/                     # Utility scripts
-    └── sync.sh
-```
+---
 
 ## License
 
-MIT — use it however you want. No attribution required.
+[MIT](LICENSE) — use it however you want. No attribution required.
+
+---
+
+<div align="center">
+
+Built with the idea that knowledge should be **alive**, not filed away.
+
+</div>
