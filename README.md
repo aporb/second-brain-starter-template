@@ -71,7 +71,7 @@ Agent follows rules from → /schema/    (you set the rules)
 
 - **[Obsidian](https://obsidian.md)** — free note-taking app. Download it.
 - **An AI agent** — Claude Code, Cursor, GitHub Copilot, or any agent that can read files and follow instructions.
-- **A GitHub account** — to download this template. Free.
+- **A GitHub account** — free. Lets you sync your vault across devices (laptop, phone, tablet) and back up your work automatically.
 
 ### Step 1: Download This Template
 
