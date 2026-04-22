@@ -23,7 +23,7 @@ Note-taking apps don't solve this. They're filing cabinets — you dump things i
 
 **This template does something different.** Your AI agent reads your sources, synthesizes them into connected wiki pages, and builds a living knowledge graph that grows every time you add something new. You curate. The agent connects. You both remember.
 
-This is sometimes called an **LLM Wiki** — a knowledge base that an AI agent actively maintains, not just a folder of notes you hope to revisit.
+This is sometimes called an **LLM Wiki** — a concept popularized by [Andrej Karpathy](https://x.com/karpathy/status/2039805659525644595). A knowledge base that an AI agent actively maintains, not just a folder of notes you hope to revisit.
 
 ---
 
@@ -189,7 +189,7 @@ The template works with any AI agent. Claude Code gets the best experience (7 sl
 No. Zero plugins required. Obsidian works out of the box with this vault. Add plugins on your own if you want, but you don't need any.
 
 **What's an LLM Wiki?**
-A term coined by Andrej Karpathy. Instead of passively filing notes, an AI agent actively reads your sources, synthesizes them into connected pages, and maintains the knowledge base over time. The vault grows smarter as you add more to it.
+A concept popularized by [Andrej Karpathy](https://x.com/karpathy/status/2039805659525644595) — instead of passively filing notes, an AI agent actively reads your sources, synthesizes them into connected pages, and maintains the knowledge base over time. The vault grows smarter as you add more to it.
 
 **Can I use this with my team?**
 Yes. The template supports branching workflows — each person works on a branch, then you merge after review. See the Git Workflow section in `AGENTS.md`.
